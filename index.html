@@ -12,6 +12,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      // GitHub Pages SPA redirect handler
+      // Restores the path from the ?p= query param set by 404.html
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+          return;
+        }
+        var search = window.location.search;
+        if (search.indexOf('?p=') === 0 || search.indexOf('&p=') > -1) {
+          var params = search.slice(1).split('&');
+          var path = '';
+          var query = '';
+          for (var i = 0; i < params.length; i++) {
+            if (params[i].indexOf('p=') === 0) {
+              path = '/' + params[i].slice(2).replace(/~and~/g, '&');
+            } else if (params[i].indexOf('q=') === 0) {
+              query = '?' + params[i].slice(2).replace(/~and~/g, '&');
+            }
+          }
+          var base = '/punithreddy678-hub';
+          if (path) {
+            history.replaceState(null, null, base + '/' + path + query + window.location.hash);
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -16,7 +16,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Router>
+        <Router basename="/punithreddy678-hub">
           <Routes>
             <Route element={<Layout showFooter={true}><HomePage /></Layout>} path="/" />
             <Route element={<Layout><AboutPage /></Layout>} path="/about" />
