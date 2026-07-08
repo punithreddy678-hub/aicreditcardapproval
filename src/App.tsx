@@ -16,17 +16,17 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Router basename="/punithreddy678-hub">
+        <Router basename={import.meta.env.BASE_URL}>
           <Routes>
-            <Route element={<Layout showFooter={true}><HomePage /></Layout>} path="/" />
-            <Route element={<Layout><AboutPage /></Layout>} path="/about" />
-            <Route element={<Layout><PredictPage /></Layout>} path="/predict" />
-            <Route element={<Layout><DashboardPage /></Layout>} path="/dashboard" />
-            <Route element={<Layout><ModelsPage /></Layout>} path="/models" />
-            <Route element={<Layout><ScenariosPage /></Layout>} path="/scenarios" />
-            <Route element={<Layout><ContactPage /></Layout>} path="/contact" />
-            <Route element={<Layout showFooter={false}><LoginPage /></Layout>} path="/login" />
-            <Route element={<Layout showFooter={false}><RegisterPage /></Layout>} path="/register" />
+            <Route path="/" element={<Layout showFooter={true}><HomePage /></Layout>} />
+            <Route path="/about" element={<Layout><AboutPage /></Layout>} />
+            <Route path="/predict" element={<Layout><PredictPage /></Layout>} />
+            <Route path="/dashboard" element={<Layout><DashboardPage /></Layout>} />
+            <Route path="/models" element={<Layout><ModelsPage /></Layout>} />
+            <Route path="/scenarios" element={<Layout><ScenariosPage /></Layout>} />
+            <Route path="/contact" element={<Layout><ContactPage /></Layout>} />
+            <Route path="/login" element={<Layout showFooter={false}><LoginPage /></Layout>} />
+            <Route path="/register" element={<Layout showFooter={false}><RegisterPage /></Layout>} />
           </Routes>
         </Router>
       </AuthProvider>
