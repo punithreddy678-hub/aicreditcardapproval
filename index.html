@@ -28,6 +28,29 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // GitHub Pages SPA redirect handler — decodes ?p= set by 404.html
+      (function () {
+        var search = window.location.search;
+        if (search.indexOf('p=') === -1) return;
+        var params = search.slice(1).split('&');
+        var path = '';
+        var query = '';
+        for (var i = 0; i < params.length; i++) {
+          if (params[i].indexOf('p=') === 0) {
+            path = '/' + params[i].slice(2).replace(/~and~/g, '&');
+          } else if (params[i].indexOf('q=') === 0) {
+            query = '?' + params[i].slice(2).replace(/~and~/g, '&');
+          }
+        }
+        if (path) {
+          window.history.replaceState(
+            null, null,
+            '/aicreditcardapproval' + path + query + window.location.hash
+          );
+        }
+      })();
+    </script>
   </head>
 
   <body>

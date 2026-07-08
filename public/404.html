@@ -2,15 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>AI Credit Card Approval</title>
     <script>
-      // GitHub Pages SPA redirect
-      // Encodes the full path as a query param and redirects to index.html
-      var segmentCount = 1; // number of path segments in the repo name
+      // GitHub Pages SPA redirect: encodes the sub-path as ?p= and redirects to index.html
+      // segmentCount = 1 because the repo lives at /aicreditcardapproval/
+      var segmentCount = 1;
       var l = window.location;
+      var base = l.pathname.split('/').slice(0, 1 + segmentCount).join('/');
+      var rest = l.pathname.slice(1).split('/').slice(segmentCount).join('/');
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=' +
-        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        base + '/?p=' + rest.replace(/&/g, '~and~') +
         (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
